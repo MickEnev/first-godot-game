@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1bk1e0hflnc6"]
+
+[ext_resource type="Script" uid="uid://cegrsgysplqyx" path="res://scripts/Ungus.cs" id="1_8skox"]
+[ext_resource type="Texture2D" uid="uid://cnogmnh1fb50j" path="res://assets/Among Us Sprite.png" id="1_200b8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8skox"]
+atlas = ExtResource("1_200b8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfw6y"]
+atlas = ExtResource("1_200b8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0csei"]
+atlas = ExtResource("1_200b8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2snyq"]
+atlas = ExtResource("1_200b8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6v2xd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8skox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfw6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0csei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2snyq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y7f0c"]
+radius = 6.0
+height = 16.0
+
+[node name="Ungus" type="Area2D"]
+z_index = 5
+collision_mask = 2
+script = ExtResource("1_8skox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6v2xd")
+autoplay = "default"
+frame_progress = 0.857225
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_y7f0c")
