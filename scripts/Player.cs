@@ -6,10 +6,12 @@ public partial class Player : CharacterBody2D
 	public const float Speed = 200.0f;
 	public const float JumpVelocity = -300.0f;
 	private AnimatedSprite2D sprite;
+	private AudioStreamPlayer2D moveSound;
 
 	public override void _Ready()
 	{
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		moveSound = GetNode<AudioStreamPlayer2D>("MoveSound");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -43,12 +45,24 @@ public partial class Player : CharacterBody2D
 		// Change animation based on movement 
 		if (IsOnFloor()) {
 			if (direction == Vector2.Zero) {
-			sprite.Play("default");
+				sprite.Play("default");
+				if (moveSound.Playing) 
+				{
+					moveSound.Stop();  // Stop the sound when idle
+				}
 			} else {
 				sprite.Play("move");
+				if (!moveSound.Playing)
+				{
+					moveSound.Play();  // Play the sound when moving
+				}
 			}
 		} else {
 			sprite.Play("jump");
+			if (moveSound.Playing) 
+				{
+					moveSound.Stop();  // Stop the sound when idle
+				}
 		}
 		
 

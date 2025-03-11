@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxj833c2l1y48"]
+[gd_scene load_steps=16 format=3 uid="uid://dxj833c2l1y48"]
 
 [ext_resource type="Script" uid="uid://b1neqquel7pv3" path="res://scripts/Player.cs" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://o8cre2iqnh1n" path="res://assets/GoodSlime.png" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://cav7j14j41qf0" path="res://assets/Soudns/Slime Move.mp3" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -101,10 +102,15 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 1)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"jump"
+animation = &"move"
 autoplay = "default"
-frame_progress = 0.364147
+frame_progress = 0.378501
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 4)
 shape = SubResource("CircleShape2D_fjrip")
+
+[node name="MoveSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_qhqgy")
+bus = &"SFX"
