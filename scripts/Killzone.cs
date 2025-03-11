@@ -10,7 +10,7 @@ public partial class Killzone : Area2D
 		BodyEntered += OnBodyEnter;
 		
 		timer = new Timer();
-		timer.WaitTime = 0.6f;
+		timer.WaitTime = 0.05f;
 		timer.OneShot = true;
 		AddChild(timer);
 		timer.Timeout += OnTimerTimeout;
